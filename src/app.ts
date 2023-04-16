@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import compression from 'compression';
 import cors from 'cors';
 import morgan from 'morgan';
-import Controller from '@/utils/interfaces/controller.interface';
+import Controller from '@/utils/interfaces/controller.interfaces';
 import ErrorMiddleware from '@/middleware/error.middleware';
 import helmet from 'helmet';
 
@@ -37,7 +37,7 @@ class App {
     }
 
     private initialiseErrorHandling(): void {
-        this.express.use(ErrorMiddleware())
+        this.express.use(ErrorMiddleware)
     }
 
     private initialiseDatabaseConnection(): void {
