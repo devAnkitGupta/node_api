@@ -11,7 +11,7 @@ class App {
     public express: Application;
     public port: number;
 
-    constructor(controllers: [], port: number) {
+    constructor(controllers: Controller[], port: number) {
         this.express = express();
         this.port = port;
 
@@ -22,7 +22,7 @@ class App {
     }
 
     private initialiseMiddleware(): void {
-        this.express.use(helmet);
+        this.express.use(helmet());
         this.express.use(cors());
         this.express.use(morgan('dev'));
         this.express.use(express.json());
@@ -32,7 +32,7 @@ class App {
 
     private initialiseController(controllers: Controller[]): void {
         controllers.forEach((controller: Controller) => {
-            this.express.use('api', controller.router);
+            this.express.use('/api', controller.router);
         })
     }
 
